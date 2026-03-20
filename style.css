@@ -1,0 +1,443 @@
+/* ================= RESET ================= */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body, button, a, input {
+  font-family:'Poppins',sans-serif;
+}
+
+/* ================= GLOBAL ================= */
+body {
+  color:white;
+  background:#0d0d0d;
+}
+
+/* ================= FUNDO ANIMADO ================= */
+.page-index::before,
+.page-cardapio::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle, rgba(255,80,0,0.12), transparent 60%),
+    radial-gradient(circle, rgba(255,140,0,0.08), transparent 70%);
+
+  animation: fogo 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes fogo {
+  0% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(40px, -50px) rotate(2deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+/* ================= CONTAINER ================= */
+.page-index .container,
+.page-cardapio .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= INDEX ================= */
+.page-index {
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.page-index .container {
+  max-width:400px;
+  text-align:center;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(20px);}
+  to { opacity:1; transform:translateY(0);}
+}
+
+/* LOGO */
+.page-index .logo {
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  margin-bottom:15px;
+  box-shadow:
+    0 0 20px rgba(255,122,0,0.6),
+    0 0 40px rgba(255,0,0,0.3);
+}
+
+/* TEXTOS */
+.page-index .desc {
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+/* LINKS */
+.page-index .links {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* ================= BOTÕES INDEX (UPGRADE 🔥) ================= */
+.page-index .btn {
+  width:100%;
+  padding:16px;
+  border-radius:16px;
+  font-weight:600;
+  text-align:center;
+  cursor:pointer;
+  border:none;
+  text-decoration:none;
+  color:white;
+
+  background: linear-gradient(180deg,#1a1a1a,#111,#0d0d0d);
+
+  box-shadow:
+    0 0 8px rgba(0,0,0,0.6),
+    0 10px 25px rgba(0,0,0,0.8);
+
+  position: relative;
+  overflow: hidden;
+
+  transition:0.25s ease;
+}
+
+/* brilho animado */
+.page-index .btn::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:200%;
+  height:100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+
+  transform:skewX(-20deg);
+  transition:0.6s;
+}
+
+.page-index .btn:hover::before {
+  left:100%;
+}
+
+/* hover mais claro */
+.page-index .btn:hover {
+  background: linear-gradient(180deg,#3a3a3a,#2a2a2a,#1a1a1a);
+  transform: translateY(-2px);
+}
+
+/* click */
+.page-index .btn:active {
+  transform: scale(0.96);
+}
+
+/* ================= CARDÁPIO ================= */
+.page-cardapio .container {
+  padding:20px;
+  max-width:500px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.page-cardapio h2 {
+  margin:20px 0 10px;
+}
+
+/* ================= ITEM ================= */
+.page-cardapio .item {
+  width:100%;
+  max-width:400px;
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:20px;
+  text-align:center;
+  background:#141414;
+
+  border:2px solid rgba(255,122,0,0.5);
+
+  box-shadow:
+    0 0 15px rgba(255,120,0,0.2),
+    0 10px 30px rgba(0,0,0,0.8);
+}
+
+/* PREÇO */
+.price {
+  color:#ff9d3f;
+  font-weight:bold;
+}
+
+/* ================= BOTÕES DOS ITENS ================= */
+.actions {
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.btn-add,
+.btn-order {
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.btn-add {
+  background:#2a2a2a;
+}
+
+.btn-add:hover {
+  background:#3a3a3a;
+}
+
+.btn-order {
+  background: linear-gradient(180deg,#ff9d3f,#ff5a00);
+  box-shadow:0 0 10px rgba(255,120,0,0.6);
+}
+
+.btn-order:hover {
+  transform:scale(1.05);
+}
+
+/* ================= EXTRAS ================= */
+.extras {
+  margin-top:10px;
+  background:#111;
+  padding:10px;
+  border-radius:10px;
+  text-align:left;
+}
+
+.hidden {
+  display:none;
+}
+
+/* ================= RADIO CUSTOM (SEM BOLINHA 🔥) ================= */
+.delivery-card input[type="radio"] {
+  display:none;
+}
+
+/* ================= ENTREGA ================= */
+.delivery-options {
+  display:flex;
+  gap:10px;
+}
+
+.delivery-card {
+  flex:1;
+  background:#1f1f1f;
+  border-radius:12px;
+  padding:12px;
+  cursor:pointer;
+  transition:0.3s;
+
+  border:2px solid rgba(255,122,0,0.4);
+}
+
+.delivery-card:hover {
+  background:#2a2a2a;
+}
+
+.delivery-card:has(input:checked) {
+  border:2px solid #ff7a00;
+  background:#2a1400;
+}
+
+/* ================= INPUTS ================= */
+.delivery input {
+  width:100%;
+  margin-top:8px;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#1a1a1a;
+  color:white;
+  outline:none;
+}
+
+.delivery input:focus {
+  border-color:#ff7a00;
+  box-shadow:0 0 6px rgba(255,120,0,0.4);
+}
+
+/* ================= CARRINHO ================= */
+.cart-button {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+
+  background: linear-gradient(180deg,#ff9d3f,#ff5a00);
+  color:white;
+
+  padding:14px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  cursor:pointer;
+
+  box-shadow:0 0 20px rgba(255,120,0,0.7);
+  z-index:1000;
+}
+
+.overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  display:none;
+  z-index:999;
+}
+
+.overlay.active {
+  display:block;
+}
+
+.cart-drawer {
+  position: fixed;
+  bottom: -100%;
+  left:0;
+  width:100%;
+  height:75%;
+  background:#111;
+  border-radius:20px 20px 0 0;
+  transition:0.4s;
+  z-index:1001;
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-drawer.active {
+  bottom:0;
+}
+
+/* HEADER */
+.cart-header {
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  border-bottom:1px solid #333;
+}
+
+/* BOTÃO X PADRONIZADO 🔥 */
+.cart-header button {
+  background:#2a2a2a;
+  color:white;
+  border:none;
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.cart-header button:hover {
+  background:#3a3a3a;
+  transform:scale(1.1);
+}
+
+/* LISTA */
+.cart-items {
+  flex:1;
+  overflow:auto;
+  padding:15px;
+}
+
+.cart-item-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.cart-item {
+  margin-bottom:15px;
+  border-bottom:1px solid #222;
+  padding-bottom:10px;
+}
+
+.remove-btn {
+  background:#ff3c00;
+  border:none;
+  color:white;
+  width:28px;
+  height:28px;
+  border-radius:6px;
+}
+
+/* OBS */
+.cart-item input {
+  width:100%;
+  margin-top:8px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #333;
+  background:#1a1a1a;
+  color:white;
+}
+
+.cart-item input:focus {
+  border-color:#ff7a00;
+}
+
+/* FOOTER */
+.cart-footer {
+  padding:15px;
+  border-top:1px solid #333;
+}
+
+.cart-footer button {
+  width:100%;
+  padding:12px;
+  background: linear-gradient(180deg,#ff9d3f,#ff5a00);
+  border:none;
+  color:white;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* ================= TOAST ================= */
+.toast {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+
+  background: linear-gradient(180deg,#ff9d3f,#ff5a00);
+  color: white;
+
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-weight: bold;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.4s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

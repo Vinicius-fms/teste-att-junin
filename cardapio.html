@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-cardapio">
+
+  <link rel="shortcut icon" href="img/logos apps/logo.png" type="image/x-icon">
+
+<div class="container">
+
+  <h1>🍔 Cardápio </h1>
+  <br>
+
+  <!-- ================= LANCHES ================= -->
+  <h2>🍔 Lanches</h2>
+
+  <!-- ITEM -->
+  <div class="item">
+    <h3>Burguer</h3>
+    <p>Pão, carne, molho especial e queijo</p>
+    <span class="price">R$ 18</span>
+
+    <div class="actions">
+      <button class="btn-add" onclick="toggleExtras(this)">➕ Adicionais</button>
+      <button class="btn-order" onclick="aumentar('X-Burguer', 18, this)">🛒 Adicionar</button>
+    </div>
+
+    <div class="extras hidden">
+      <label>
+        <input type="checkbox" data-nome="Bacon" data-preco="5">
+        Bacon (+R$5)
+      </label>
+
+      <label>
+        <input type="checkbox" data-nome="Queijo extra" data-preco="3">
+        Queijo extra (+R$3)
+      </label>
+    </div>
+  </div>
+
+  <!-- ITEM -->
+  <div class="item">
+    <h3>Burguer Salada</h3>
+    <p>Pão, carne, molho especial, alface, cebola roxa e tomate</p>
+    <span class="price">R$ 20</span>
+
+    <div class="actions">
+      <button class="btn-add" onclick="toggleExtras(this)">➕ Adicionais</button>
+      <button class="btn-order" onclick="aumentar('X-Salada', 20, this)">🛒 Adicionar</button>
+    </div>
+
+    <div class="extras hidden">
+      <label>
+        <input type="checkbox" data-nome="Bacon" data-preco="5">
+        Bacon (+R$5)
+      </label>
+
+      <label>
+        <input type="checkbox" data-nome="Queijo extra" data-preco="3">
+        Queijo extra (+R$3)
+      </label>
+    </div>
+  </div>
+
+  <!-- ================= BEBIDAS ================= -->
+  <h2>🥤 Bebidas</h2>
+
+  <div class="item">
+    <h3>Coca-Cola</h3>
+    <p>Lata 350ml</p>
+    <span class="price">R$ 6</span>
+
+    <div class="actions">
+      <button class="btn-order" onclick="aumentar('Coca-Cola', 6, this)">🛒 Adicionar</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <h3>Coca-Cola Zero</h3>
+    <p>Lata 350ml</p>
+    <span class="price">R$ 6</span>
+
+    <div class="actions">
+      <button class="btn-order" onclick="aumentar('Coca-Cola Zero', 6, this)">🛒 Adicionar</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= BOTÃO CARRINHO ================= -->
+<div class="cart-button" onclick="abrirCarrinho()">
+  🛒 <span id="cartCount">0</span>
+</div>
+
+<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+
+<!-- ================= CARRINHO ================= -->
+<div class="cart-drawer" id="cartDrawer">
+
+  <div class="cart-header">
+    <h3>🛒 Seu Pedido</h3>
+    <button onclick="fecharCarrinho()">✖</button>
+  </div>
+
+  <div id="cartItems" class="cart-items"></div>
+
+  <div class="cart-footer">
+
+    <!-- ENTREGA -->
+    <div class="delivery">
+
+      <p class="delivery-title">Forma de recebimento</p>
+
+      <div class="delivery-options">
+
+        <label class="delivery-card">
+          <input type="radio" name="tipoEntrega" value="retirada">
+          <div>
+            <strong>📍 Retirada</strong>
+            <p>Pegar no local</p>
+          </div>
+        </label>
+
+        <label class="delivery-card">
+          <input type="radio" name="tipoEntrega" value="entrega">
+          <div>
+            <strong>🚚 Entrega</strong>
+            <p>Receber em casa</p>
+          </div>
+        </label>
+
+      </div>
+
+      <div id="entregaCampos" class="hidden">
+        <input type="text" id="cep" placeholder="Digite o CEP">
+        <input type="text" id="numero" placeholder="Número da casa">
+
+        <div id="enderecoCompleto"></div>
+
+        <p id="avisoEntrega" class="hidden">
+          ⚠️ Taxa inicial de R$6 (pode variar)
+        </p>
+      </div>
+
+    </div>
+
+    <strong id="total">Total: R$ 0</strong>
+
+    <button onclick="finalizar()">Finalizar Pedido</button>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
